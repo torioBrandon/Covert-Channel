@@ -7,13 +7,17 @@ public class CovertChannel {
 
 	public static void main(String[] args) {
 		
-		File file;
+		String filename;
+		File infile, outfile;
 		if (args[0].equalsIgnoreCase("v")){
 			// do something
-			file = new File(args[1]);
+			filename = args[1];
 		}
 		else		
-			file = new File(args[0]);
+			filename = args[0];
+		
+		infile = new File(filename + ".txt");
+		outfile = new File(filename + ".out");
 
 		SecureSystem sys = new SecureSystem();
 		
@@ -24,7 +28,7 @@ public class CovertChannel {
 		sys.createSubject("Hal", high);
 		
 		try {
-			Scanner sc = new Scanner(file);
+			Scanner sc = new Scanner(infile);
 			while (sc.hasNextLine()) {
 				//String str = sc.nextLine();
 				//byte[] currln = str.getBytes();

@@ -61,17 +61,17 @@ public class ReferenceMonitor {
 			System.out.println(s.name + " writes value " + currInstruction.val + " to " + o.name);
 		} else if(currInstruction.instr == InstructionObject.instructionType.BAD){
 			System.out.println("Bad Instruction");
-		}
-		else if (currInstruction.instr == InstructionObject.instructionType.CREATE) {
+		} else if (currInstruction.instr == InstructionObject.instructionType.CREATE) {
 			String objName = currInstruction.objName;
 			if (!hasObject(objName)){
 				createObject(objName, s.sl);
 			}
-		}
-		else if (currInstruction.instr == InstructionObject.instructionType.DESTROY) {
+		} else if (currInstruction.instr == InstructionObject.instructionType.DESTROY) {
 			if (o != null && om.objs.contains(o))
 				if (s.sl.compareTo(o.sl) <= 0)
 					destroyObject(o);
+		} else if (currInstruction.instr == InstructionObject.instructionType.RUN) {
+			// do some things
 		}
 	}
 	
