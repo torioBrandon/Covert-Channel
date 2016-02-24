@@ -21,7 +21,7 @@ public class Subject {
 	
 	public void run(){
 		
-		if(bitCounter == 7)
+		if(bitCounter == 7) {
 			if(b.isEmpty()){
 				//TERMINATE
 			}

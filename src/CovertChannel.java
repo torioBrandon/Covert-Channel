@@ -26,8 +26,8 @@ public class CovertChannel {
 		try {
 			Scanner sc = new Scanner(file);
 			while (sc.hasNextLine()) {
-				String str = sc.nextLine();
-				byte[] currln = str.getBytes();
+				//String str = sc.nextLine();
+				//byte[] currln = str.getBytes();
 				
 				
 			}						

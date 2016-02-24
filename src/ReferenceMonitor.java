@@ -18,7 +18,7 @@ public class ReferenceMonitor {
 		return o;
 	}
 	
-	public void createNewObject(String name, SecureSystem.SecurityLevel sl){
+	public void createObject(String name, SecureSystem.SecurityLevel sl){
 		om.newObject(name, sl);
 	}
 	
@@ -54,13 +54,24 @@ public class ReferenceMonitor {
 				s.temp = 0;
 			}
 			System.out.println(s.name + " reads " + o.name);
-		} if(currInstruction.instr == InstructionObject.instructionType.WRITE){
+		} else if(currInstruction.instr == InstructionObject.instructionType.WRITE){
 			if((s.sl).compareTo(o.sl) <= 0){
 				o.val = currInstruction.val;
 			}
 			System.out.println(s.name + " writes value " + currInstruction.val + " to " + o.name);
 		} else if(currInstruction.instr == InstructionObject.instructionType.BAD){
 			System.out.println("Bad Instruction");
+		}
+		else if (currInstruction.instr == InstructionObject.instructionType.CREATE) {
+			String objName = currInstruction.objName;
+			if (!hasObject(objName)){
+				createObject(objName, s.sl);
+			}
+		}
+		else if (currInstruction.instr == InstructionObject.instructionType.DESTROY) {
+			if (o != null && om.objs.contains(o))
+				if (s.sl.compareTo(o.sl) <= 0)
+					destroyObject(o);
 		}
 	}
 	
